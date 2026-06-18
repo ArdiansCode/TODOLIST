@@ -81,7 +81,7 @@ export default function App() {
     ];
   });
   const [contributions, setContributions] = useState<{ [date: string]: number }>(() => {
-    const saved = localStorage.getItem('retro_contributions');
+    const saved = localStorage.getItem('retro_contributions_v2');
     if (saved) return JSON.parse(saved);
     return {};
   });
@@ -123,7 +123,7 @@ export default function App() {
   }, [logs]);
 
   useEffect(() => {
-    localStorage.setItem('retro_contributions', JSON.stringify(contributions));
+    localStorage.setItem('retro_contributions_v2', JSON.stringify(contributions));
   }, [contributions]);
 
   // Helper log generator
