@@ -1,0 +1,6 @@
+{
+  "name": "Web Produktivitas Gamifikasi 8-Bit",
+  "description": "Aplikasi produktivitas gamifikasi retro 8-bit dengan Virtual Pet, Todo List, Toko Makanan, Pomodoro Timer, dan kontribusi harian.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
