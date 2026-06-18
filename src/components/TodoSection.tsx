@@ -45,39 +45,39 @@ export const TodoSection: React.FC<TodoSectionProps> = ({
   });
 
   return (
-    <div className="bg-[#3d3d3d] pixel-border p-5 text-white flex flex-col h-full justify-between">
+    <div className="bg-retro-panel pixel-border p-5 text-retro-text flex flex-col h-full justify-between">
       <div>
         {/* QUEST BOOK HEADER */}
-        <div className="flex justify-between items-center bg-[#292929] border-4 border-black p-3 mb-4">
+        <div className="flex justify-between items-center bg-retro-sub border-4 border-retro-border p-3 mb-4">
           <div className="flex items-center gap-2">
             <CheckSquare className="text-[#4caf50] w-6 h-6" />
             <span className="font-press-start text-xs tracking-tight">ACTIVE QUEST LOG</span>
           </div>
-          <span className="font-press-start text-[10px] text-gray-400">
+          <span className="font-press-start text-[10px] text-retro-muted">
             [{tasks.filter(t => !t.completed).length} AKTIF]
           </span>
         </div>
 
         {/* INPUT QUEST FORM */}
-        <form onSubmit={handleSubmit} className="mb-4 bg-[#252525] p-3 border-4 border-black flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="mb-4 bg-retro-inner p-3 border-4 border-retro-border flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <input
               type="text"
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
               placeholder="Tulis quest baru di sini..."
-              className="flex-1 bg-[#1a1a1a] border-2 border-black font-vt323 text-lg p-2 text-white placeholder-gray-500 focus:outline-none"
+              className="flex-1 bg-retro-inner border-2 border-retro-border font-vt323 text-lg p-2 text-retro-text placeholder-retro-muted/80 focus:outline-none"
             />
             <button
               type="submit"
-              className="bg-[#4caf50] hover:bg-[#81c784] text-black border-2 border-black p-2 flex items-center justify-center font-press-start"
+              className="bg-[#4caf50] hover:bg-[#81c784] text-black border-2 border-retro-border p-2 flex items-center justify-center font-press-start cursor-pointer"
             >
               <Plus className="w-5 h-5" />
             </button>
           </div>
 
           <div className="flex items-center justify-between gap-2">
-            <span className="font-press-start text-[9px] text-gray-400">TINGKAT KESULITAN:</span>
+            <span className="font-press-start text-[9px] text-retro-muted">TINGKAT KESULITAN:</span>
             <div className="flex gap-1.5 flex-1 justify-end">
               {(['easy', 'medium', 'hard'] as Difficulty[]).map((diff) => {
                 const isSelected = difficulty === diff;
@@ -93,8 +93,8 @@ export const TodoSection: React.FC<TodoSectionProps> = ({
                     onClick={() => setDifficulty(diff)}
                     className={`font-press-start text-[9px] px-2 py-1 uppercase border-2 transition-transform cursor-pointer ${
                       isSelected 
-                        ? `${activeStyle} border-black scale-105` 
-                        : 'bg-[#1e1e1e] border-black text-gray-400 hover:text-white'
+                        ? `${activeStyle} border-retro-border scale-105` 
+                        : 'bg-retro-inner border-retro-border text-retro-muted hover:text-retro-text'
                     }`}
                   >
                     {diff === 'easy' ? 'EASY' : diff === 'medium' ? 'MED' : 'HARD'}
@@ -115,7 +115,7 @@ export const TodoSection: React.FC<TodoSectionProps> = ({
                 className={`font-press-start text-[9px] px-2.5 py-1 border-2 transition-all cursor-pointer ${
                   filter === mode
                     ? 'bg-[#b0bec5] text-black border-white'
-                    : 'bg-[#292929] text-gray-400 border-black hover:text-white'
+                    : 'bg-retro-sub text-retro-muted border-retro-border hover:text-retro-text'
                 }`}
               >
                 {mode === 'all' ? 'SEMUA' : mode === 'active' ? 'AKTIF' : 'SELESAI'}
@@ -127,7 +127,7 @@ export const TodoSection: React.FC<TodoSectionProps> = ({
         {/* QUEST LIST VIEWPORT */}
         <div className="space-y-2 max-h-[360px] overflow-y-auto pr-1">
           {filteredTasks.length === 0 ? (
-            <div className="text-center py-10 border-4 border-dashed border-black bg-[#2e2e2e] p-4 text-gray-400">
+            <div className="text-center py-10 border-4 border-dashed border-retro-border bg-retro-inner p-4 text-retro-muted">
               <ShieldAlert className="w-8 h-8 mx-auto mb-2 text-[#ffeb3b]" />
               <p className="font-press-start text-[10px] tracking-tight leading-loose uppercase">Quest list kosong!</p>
               <p className="font-vt323 text-sm mt-1">Tambahkan misi harian baru!</p>
@@ -136,22 +136,22 @@ export const TodoSection: React.FC<TodoSectionProps> = ({
             filteredTasks.map((task) => (
               <div
                 key={task.id}
-                className={`flex gap-3 items-center justify-between p-3 border-2 border-black transition-all group ${
+                className={`flex gap-3 items-center justify-between p-3 border-2 border-retro-border transition-all group ${
                   task.completed 
-                    ? 'bg-[#292929]/70 border-[#222222] opacity-60' 
-                    : 'bg-[#292929] hover:translate-x-1 hover:-translate-y-0.5 hover:shadow-[2px_2px_0px_#000]'
+                    ? 'bg-retro-sub/50 border-retro-muted/40 opacity-60' 
+                    : 'bg-retro-sub hover:translate-x-1 hover:-translate-y-0.5 hover:shadow-[2px_2px_0px_var(--retro-border)]'
                 }`}
               >
                 {/* Completion Checkmark Toggle */}
                 <button
                   type="button"
                   onClick={() => onToggleTask(task.id)}
-                  className="text-[#ffeb3b] focus:outline-none flex-shrink-0 cursor-pointer"
+                  className="text-[#ffeb3b] focus:outline-none flex-shrink-0 cursor-pointer animate-none"
                 >
                   {task.completed ? (
                     <CheckSquare className="w-5 h-5 text-[#4caf50]" />
                   ) : (
-                    <Square className="w-5 h-5 text-gray-400 hover:text-white" />
+                    <Square className="w-5 h-5 text-retro-muted hover:text-retro-text" />
                   )}
                 </button>
 
@@ -159,7 +159,7 @@ export const TodoSection: React.FC<TodoSectionProps> = ({
                 <div className="flex-1 min-w-0 pr-2">
                   <span
                     className={`font-vt323 text-lg block leading-snug truncate ${
-                      task.completed ? 'line-through text-gray-500' : 'text-white'
+                      task.completed ? 'line-through text-retro-muted' : 'text-retro-text'
                     }`}
                   >
                     {task.title}

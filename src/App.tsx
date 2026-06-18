@@ -10,7 +10,7 @@ import { TodoSection } from './components/TodoSection';
 import { PomodoroSection, playRetroSound } from './components/PomodoroSection';
 import { StatsSection } from './components/StatsSection';
 import { NameSetupSection } from './components/NameSetupSection';
-import { ShieldCheck, Info, RefreshCw, Sparkles, Volume2, Gamepad2, Award } from 'lucide-react';
+import { ShieldCheck, Info, RefreshCw, Sparkles, Volume2, Gamepad2, Award, Sun, Moon } from 'lucide-react';
 
 // Predefined shop items matching the Indonesian 8-bit translation
 const DEFAULT_SHOP_ITEMS: ShopItem[] = [
@@ -89,6 +89,21 @@ export default function App() {
   const [playerName, setPlayerName] = useState<string>(() => {
     return localStorage.getItem('retro_player_name') || '';
   });
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    const saved = localStorage.getItem('retro_theme_is_dark');
+    return saved !== 'false';
+  });
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
+    }
+    localStorage.setItem('retro_theme_is_dark', String(isDark));
+  }, [isDark]);
 
   // 1. Initial State Loading from LocalStorage on mount
   useEffect(() => {
@@ -421,16 +436,16 @@ export default function App() {
 
   if (!playerName) {
     return (
-      <div className="min-h-screen bg-[#2c2c2c] p-4 text-white font-sans selection:bg-yellow-400 selection:text-black flex items-center justify-center">
+      <div className={`min-h-screen ${isDark ? 'dark bg-retro-bg' : 'bg-retro-bg'} p-4 text-retro-text font-sans selection:bg-yellow-400 selection:text-black flex items-center justify-center transition-colors duration-200`}>
         <NameSetupSection onComplete={handleSetupComplete} />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#2c2c2c] p-4 text-white font-sans selection:bg-yellow-400 selection:text-black">
+    <div className={`min-h-screen ${isDark ? 'dark bg-retro-bg' : 'bg-retro-bg'} p-4 text-retro-text font-sans selection:bg-yellow-400 selection:text-black transition-colors duration-200`}>
       {/* GLOBAL RETRO HEADER */}
-      <header className="max-w-7xl mx-auto mb-8 bg-[#3d3d3d] border-4 border-black p-4 flex flex-col sm:flex-row justify-between items-center gap-4 relative shadow-[8px_8px_0px_#000]">
+      <header className="max-w-7xl mx-auto mb-8 bg-retro-panel border-4 border-retro-border p-4 flex flex-col sm:flex-row justify-between items-center gap-4 relative shadow-[8px_8px_0px_var(--retro-border)] text-retro-text">
         
         {/* Left Brand Title */}
         <div className="flex items-center gap-3">
@@ -438,7 +453,7 @@ export default function App() {
             <h1 className="font-press-start text-sm tracking-tight md:text-lg text-[#ffeb3b]">
               TODOLIST RPG
             </h1>
-            <span className="font-vt323 text-lg text-gray-400 tracking-wider">
+            <span className="font-vt323 text-lg text-retro-muted tracking-wider">
               website produktivitas
             </span>
             {playerName && (
@@ -454,9 +469,30 @@ export default function App() {
 
         {/* Right Info Box */}
         <div className="flex items-center gap-4">
-          <div className="bg-[#1e1e1e] border-2 border-black py-1.5 px-4 block text-center min-w-[120px]">
+          {/* Theme Mode Toggle Button */}
+          <button
+            onClick={() => {
+              setIsDark(!isDark);
+              playRetroSound('click');
+            }}
+            className="bg-retro-sub border-2 border-retro-border py-1.5 px-3 hover:bg-retro-panel transition-all active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_var(--retro-border)] flex items-center gap-2 cursor-pointer text-retro-text"
+          >
+            {isDark ? (
+              <>
+                <Sun className="w-4 h-4 text-yellow-400" />
+                <span className="font-press-start text-[8px] tracking-tight">MOD LIGHT</span>
+              </>
+            ) : (
+              <>
+                <Moon className="w-4 h-4 text-indigo-500" />
+                <span className="font-press-start text-[8px] tracking-tight">MOD DARK</span>
+              </>
+            )}
+          </button>
+
+          <div className="bg-retro-inner border-2 border-retro-border py-1.5 px-4 block text-center min-w-[120px] text-retro-text">
             <span className="font-press-start text-[9px] text-[#4caf50] block mb-1">JAM DUNIA</span>
-            <span className="font-mono text-xs tracking-widest text-white">{currentTime || '--:--:--'}</span>
+            <span className="font-mono text-xs tracking-widest">{currentTime || '--:--:--'}</span>
           </div>
         </div>
 
@@ -513,7 +549,7 @@ export default function App() {
       </section>
 
       {/* FOOTER AUTHOR CREDITS */}
-      <footer className="text-center py-6 border-t-4 border-[#333] text-gray-500 font-vt323 text-lg max-w-7xl mx-auto">
+      <footer className="text-center py-6 border-t-4 border-retro-sub text-retro-muted font-vt323 text-lg max-w-7xl mx-auto">
         <p>© 2026 Ardiansyah. TODOLIST.</p>
       </footer>
     </div>

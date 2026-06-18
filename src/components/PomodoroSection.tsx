@@ -161,10 +161,10 @@ export const PomodoroSection: React.FC<PomodoroSectionProps> = ({
   };
 
   return (
-    <div className="bg-[#3d3d3d] pixel-border p-5 text-white flex flex-col justify-between h-full">
+    <div className="bg-retro-panel pixel-border p-5 text-retro-text flex flex-col justify-between h-full">
       <div>
         {/* HEADER AREA */}
-        <div className="flex justify-between items-center bg-[#292929] border-4 border-black p-3 mb-4">
+        <div className="flex justify-between items-center bg-retro-sub border-4 border-retro-border p-3 mb-4">
           <div className="flex items-center gap-2">
             <span className="font-press-start text-xs tracking-tight">TIMER</span>
           </div>
@@ -173,14 +173,14 @@ export const PomodoroSection: React.FC<PomodoroSectionProps> = ({
               setSoundEnabled(!soundEnabled);
               playRetroSound('click');
             }}
-            className="text-gray-400 hover:text-white"
+            className="text-retro-muted hover:text-retro-text px-1 cursor-pointer"
           >
             {soundEnabled ? <Volume2 className="w-5 h-5 text-[#ffeb3b]" /> : <VolumeX className="w-5 h-5" />}
           </button>
         </div>
 
         {/* TIMER DIAL VIEW */}
-        <div className="bg-[#1e1e1e] border-4 border-black p-6 text-center mb-4 flex flex-col items-center justify-center relative shadow-[inset_0px_4px_0px_#000]">
+        <div className="bg-retro-inner border-4 border-retro-border p-6 text-center mb-4 flex flex-col items-center justify-center relative shadow-[inset_0px_4px_0px_#000]">
           {/* Subtle neon glowing text shadow */}
           <span className="font-press-start text-3xl md:text-4xl text-[#ffeb3b] tracking-widest block font-bold">
             {formatTime(timeLeft)}
@@ -201,7 +201,7 @@ export const PomodoroSection: React.FC<PomodoroSectionProps> = ({
 
         {/* WORK MIN PRESET CONFIGURATOR */}
         <div className="mb-4">
-          <span className="font-press-start text-[9px] text-gray-400 block mb-2 uppercase">ATUR DURASI FOKUS (MENIT):</span>
+          <span className="font-press-start text-[9px] text-retro-muted block mb-2 uppercase">ATUR DURASI FOKUS (MENIT):</span>
           <div className="grid grid-cols-3 gap-2">
             {[10, 25, 50].map((mins) => (
               <button
@@ -210,7 +210,7 @@ export const PomodoroSection: React.FC<PomodoroSectionProps> = ({
                 className={`font-press-start text-[10px] py-1.5 border-4 transition-all uppercase cursor-pointer ${
                   duration === mins && mode === 'work'
                     ? 'bg-[#e67e22] text-white border-white'
-                    : 'bg-[#292929] text-gray-450 border-black hover:text-white'
+                    : 'bg-retro-sub text-retro-muted border-retro-border hover:text-retro-text'
                 }`}
               >
                 {mins}m
@@ -220,12 +220,12 @@ export const PomodoroSection: React.FC<PomodoroSectionProps> = ({
         </div>
 
         {/* SESSION LOG TRIVIA */}
-        <div className="bg-[#2a2a2a] border-2 border-black p-3 mb-4 rounded-none">
-          <div className="flex justify-between items-center text-xs text-gray-400 font-vt323 leading-relaxed mb-1">
+        <div className="bg-retro-inner border-2 border-retro-border p-3 mb-4 rounded-none">
+          <div className="flex justify-between items-center text-xs text-retro-muted font-vt323 leading-relaxed mb-1">
             <span>Streak Harian:</span>
             <span className="font-press-start text-[9px] text-orange-400">🔥 {sessionStreak} Blok</span>
           </div>
-          <div className="flex justify-between items-center text-xs text-gray-400 font-vt323 leading-relaxed">
+          <div className="flex justify-between items-center text-xs text-retro-muted font-vt323 leading-relaxed">
             <span>Perolehan Koin:</span>
             <span className="text-[#ffeb3b] text-[9px] font-press-start">+{duration} G / Sesi</span>
           </div>
@@ -236,7 +236,7 @@ export const PomodoroSection: React.FC<PomodoroSectionProps> = ({
       <div className="flex gap-2">
         <button
           onClick={handleToggleTimer}
-          className={`flex-1 font-press-start text-[10px] py-3 text-black border-4 border-black shadow-[4px_4px_0px_#000000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-pointer ${
+          className={`flex-1 font-press-start text-[10px] py-3 text-black border-4 border-retro-border shadow-[4px_4px_0px_var(--retro-border)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-pointer ${
             isRunning 
               ? 'bg-[#ffeb3b] hover:bg-yellow-450' 
               : 'bg-[#4caf50] hover:bg-[#81c784]'
@@ -248,7 +248,7 @@ export const PomodoroSection: React.FC<PomodoroSectionProps> = ({
 
         <button
           onClick={handleReset}
-          className="bg-red-500 hover:bg-red-400 font-press-start text-[10px] text-white p-3 border-4 border-black shadow-[4px_4px_0px_#000000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-pointer"
+          className="bg-red-500 hover:bg-red-400 font-press-start text-[10px] text-white p-3 border-4 border-retro-border shadow-[4px_4px_0px_var(--retro-border)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-pointer"
         >
           <RotateCcw className="w-4.5 h-4.5" />
         </button>

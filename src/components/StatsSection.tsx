@@ -93,25 +93,25 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ logs, contributions 
   const streakInfo = getStreakTitleAndIcon(currentStreak);
 
   return (
-    <div className="bg-[#3d3d3d] pixel-border p-4 text-white">
+    <div className="bg-retro-panel pixel-border p-4 text-retro-text">
       {/* SECTION WRAPPER ROW - MODIFIED TO 3 COLUMNS IN MD VIEWS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         
         {/* HEATMAP / DAILY CONTRIBUTION */}
-        <div className="bg-[#292929] border-4 border-black p-3.5 flex flex-col justify-between">
+        <div className="bg-retro-sub border-4 border-retro-border p-3.5 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-1.5 mb-2">
               <CalendarDays className="text-[#4caf50] w-5 h-5" />
               <span className="font-press-start text-[10px] tracking-tight uppercase">HEATMAP KONTRIBUSI</span>
             </div>
-            <p className="font-vt323 text-xs text-gray-400 mb-3.5 block leading-tight">
+            <p className="font-vt323 text-xs text-retro-muted mb-3.5 block leading-tight">
               Selesaikan Quest untuk mewarnai baris kontribusi harianmu (14 hari terakhir)!
             </p>
           </div>
 
           <div className="flex flex-col gap-2">
             {/* Grid wrapper */}
-            <div className="grid grid-cols-7 gap-1.5 bg-[#1a1a1a] p-2 border-2 border-black">
+            <div className="grid grid-cols-7 gap-1.5 bg-retro-inner p-2 border-2 border-retro-border">
               {pastDays.map((day) => {
                 const count = contributions[day.dateStr] || 0;
                 return (
@@ -131,7 +131,7 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ logs, contributions 
             </div>
 
             {/* Colors description bar */}
-            <div className="flex items-center justify-between text-[10px] font-vt323 text-gray-400 mt-1">
+            <div className="flex items-center justify-between text-[10px] font-vt323 text-retro-muted mt-1">
               <span>Kurang</span>
               <div className="flex gap-1 items-center">
                 <div className="w-3.5 h-3.5 bg-[#222] border border-black"></div>
@@ -145,18 +145,18 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ logs, contributions 
         </div>
 
         {/* NEW COLUMN: DAILY STREAK ACCUMULATOR */}
-        <div className="bg-[#292929] border-4 border-black p-3.5 flex flex-col justify-between">
+        <div className="bg-retro-sub border-4 border-retro-border p-3.5 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-1.5 mb-2">
               <Flame className="text-[#ff5722] w-5 h-5" />
               <span className="font-press-start text-[10px] tracking-tight uppercase">RUNTUTAN HARIAN</span>
             </div>
-            <p className="font-vt323 text-xs text-gray-400 mb-2 leading-tight">
+            <p className="font-vt323 text-xs text-retro-muted mb-2 leading-tight">
               Jumlah hari produktif berturut-turut tanpa terputus secara real-time:
             </p>
           </div>
 
-          <div className="flex-grow flex flex-col items-center justify-center py-2 bg-[#1a1a1a] border-2 border-black rounded-sm relative overflow-hidden">
+          <div className="flex-grow flex flex-col items-center justify-center py-2 bg-retro-inner border-2 border-retro-border rounded-sm relative overflow-hidden">
             {/* Ambient fire glow background */}
             {currentStreak > 0 && (
               <div className="absolute inset-0 bg-gradient-to-t from-orange-600/10 to-transparent pointer-events-none animate-pulse"></div>
@@ -180,30 +180,30 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ logs, contributions 
           </div>
 
           <div className="mt-2 text-center">
-            <span className="font-vt323 text-xs text-center text-gray-300 italic block leading-relaxed px-1">
+            <span className="font-vt323 text-xs text-center text-retro-muted italic block leading-relaxed px-1">
               "{streakInfo.desc}"
             </span>
           </div>
         </div>
 
         {/* QUEST EVENT ADVENTURE LOG */}
-        <div className="bg-[#292929] border-4 border-black p-3.5 flex flex-col justify-between min-h-[170px]">
+        <div className="bg-retro-sub border-4 border-retro-border p-3.5 flex flex-col justify-between min-h-[170px]">
           <div>
             <div className="flex items-center gap-1.5 mb-2">
               <History className="text-[#ffeb3b] w-5 h-5" />
               <span className="font-press-start text-[10px] tracking-tight uppercase">QUEST LOG</span>
             </div>
-            <p className="font-vt323 text-xs text-gray-400 mb-2 leading-tight">
+            <p className="font-vt323 text-xs text-retro-muted mb-2 leading-tight">
               Rekaman riwayat seluruh pencapaian penting dalam program latihan:
             </p>
           </div>
 
-          <div className="bg-[#1e1e1e] border-2 border-black p-2 flex-grow overflow-y-auto max-h-[110px] space-y-1 font-mono text-[11px] leading-relaxed">
+          <div className="bg-retro-inner border-2 border-retro-border p-2 flex-grow overflow-y-auto max-h-[110px] space-y-1 font-mono text-[11px] leading-relaxed">
             {logs.length === 0 ? (
               <p className="text-gray-600 text-center py-4 italic font-vt323 text-sm">Belum ada catatan...</p>
             ) : (
               logs.map((log) => {
-                let logColor = 'text-gray-400';
+                let logColor = 'text-retro-muted';
                 if (log.type === 'task') logColor = 'text-[#4caf50]';
                 if (log.type === 'shop') logColor = 'text-[#ffeb3b]';
                 if (log.type === 'pet') logColor = 'text-pink-400';
@@ -211,7 +211,7 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ logs, contributions 
 
                 return (
                   <div key={log.id} className="flex gap-1.5 items-start">
-                    <span className="text-gray-600 text-[10px] font-press-start select-none">
+                    <span className="text-retro-muted text-[10px] font-press-start select-none opacity-60">
                       {log.timestamp}
                     </span>
                     <span className={`${logColor} font-vt323 text-sm`}>{log.message}</span>

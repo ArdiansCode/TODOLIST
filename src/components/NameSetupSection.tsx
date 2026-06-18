@@ -68,13 +68,13 @@ export const NameSetupSection: React.FC<NameSetupSectionProps> = ({ onComplete }
   };
 
   return (
-    <div className="max-w-xl mx-auto my-12 bg-[#3d3d3d] border-4 border-black p-6 md:p-8 relative shadow-[8px_8px_0px_#000]">
+    <div className="max-w-xl mx-auto my-12 bg-retro-panel border-4 border-retro-border p-6 md:p-8 relative shadow-[8px_8px_0px_var(--retro-border)] text-retro-text">
       {/* HEADER BANNER */}
-      <div className="text-center mb-8 border-b-4 border-black pb-6">
+      <div className="text-center mb-8 border-b-4 border-retro-border pb-6">
         <h1 className="font-press-start text-base md:text-lg text-[#ffeb3b] tracking-wider uppercase mb-2">
           PEMBUATAN KARAKTER
         </h1>
-        <p className="font-vt323 text-lg md:text-xl text-gray-300 tracking-wide">
+        <p className="font-vt323 text-lg md:text-xl text-retro-muted tracking-wide">
           pendaftaran todolist
         </p>
       </div>
@@ -94,7 +94,7 @@ export const NameSetupSection: React.FC<NameSetupSectionProps> = ({ onComplete }
               setName(e.target.value);
               if (error) setError('');
             }}
-            className="w-full bg-[#1e1e1e] border-4 border-black p-3 text-white font-mono tracking-wider text-sm focus:border-[#ffeb3b] focus:outline-none"
+            className="w-full bg-retro-inner border-4 border-retro-border p-3 text-retro-text font-mono tracking-wider text-sm focus:border-[#ffeb3b] focus:outline-none"
           />
         </div>
 
@@ -114,7 +114,7 @@ export const NameSetupSection: React.FC<NameSetupSectionProps> = ({ onComplete }
                   className={`border-4 p-3 flex flex-col items-center justify-center gap-2 group transition-all text-center ${
                     isSelected
                       ? 'border-[#ffeb3b] bg-[#ffeb3b]/10 shadow-[4px_4px_0px_#000]'
-                      : 'border-black bg-[#2c2c2c] hover:border-gray-400'
+                      : 'border-retro-border bg-retro-bg hover:border-retro-muted'
                   }`}
                 >
                   <PixelSprite species={sp.id} status="idle" className="w-12 h-12" />
@@ -127,7 +127,7 @@ export const NameSetupSection: React.FC<NameSetupSectionProps> = ({ onComplete }
           </div>
           
           {/* PET DETAILS */}
-          <div className="mt-4 bg-[#212121] border-2 border-black p-3 font-vt323 text-base text-gray-300 tracking-wide">
+          <div className="mt-4 bg-retro-inner border-2 border-retro-border p-3 font-vt323 text-base text-retro-muted tracking-wide">
             <span className="text-[#ffeb3b] font-press-start text-[9px] block mb-1">
               INFO {selectedPet.toUpperCase()}:
             </span>
@@ -149,7 +149,7 @@ export const NameSetupSection: React.FC<NameSetupSectionProps> = ({ onComplete }
               setPetName(e.target.value);
               if (error) setError('');
             }}
-            className="w-full bg-[#1e1e1e] border-4 border-black p-3 text-white font-mono tracking-wider text-sm focus:border-[#ffeb3b] focus:outline-none"
+            className="w-full bg-retro-inner border-4 border-retro-border p-3 text-retro-text font-mono tracking-wider text-sm focus:border-[#ffeb3b] focus:outline-none"
           />
         </div>
 
@@ -163,7 +163,7 @@ export const NameSetupSection: React.FC<NameSetupSectionProps> = ({ onComplete }
         {/* SUBMIT ACTION BUTTON */}
         <button
           type="submit"
-          className="w-full bg-[#4caf50] hover:bg-[#66bb6a] text-black font-press-start text-xs py-4 px-6 border-4 border-black shadow-[4px_4px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full bg-[#4caf50] hover:bg-[#66bb6a] text-black font-press-start text-xs py-4 px-6 border-4 border-retro-border shadow-[4px_4px_0px_var(--retro-border)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
           MULAI<ArrowRight className="w-4 h-4 text-black" />
         </button>

@@ -4,22 +4,53 @@
 @theme {
   --font-press-start: "Press Start 2P", monospace;
   --font-vt323: "VT323", monospace;
+
+  --color-retro-bg: var(--retro-bg);
+  --color-retro-panel: var(--retro-panel);
+  --color-retro-header: var(--retro-header);
+  --color-retro-sub: var(--retro-sub);
+  --color-retro-inner: var(--retro-inner);
+  --color-retro-text: var(--retro-text);
+  --color-retro-muted: var(--retro-muted);
+  --color-retro-border: var(--retro-border);
+}
+
+:root {
+  --retro-bg: #eaeae0;
+  --retro-panel: #f8f8f0;
+  --retro-header: #eaeae0;
+  --retro-sub: #d8d8c8;
+  --retro-inner: #ebebe0;
+  --retro-text: #000000;
+  --retro-muted: #5a5a54;
+  --retro-border: #000000;
+}
+
+.dark {
+  --retro-bg: #2c2c2c;
+  --retro-panel: #3d3d3d;
+  --retro-header: #3d3d3d;
+  --retro-sub: #292929;
+  --retro-inner: #1e1e1e;
+  --retro-text: #ffffff;
+  --retro-muted: #9e9e9e;
+  --retro-border: #000000;
 }
 
 /* Custom Pixel Art Styles */
 .pixel-border {
-  border: 4px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
+  border: 4px solid var(--retro-border);
+  box-shadow: 4px 4px 0px var(--retro-border);
 }
 
 .pixel-border-sm {
-  border: 2px solid #000000;
-  box-shadow: 2px 2px 0px #000000;
+  border: 2px solid var(--retro-border);
+  box-shadow: 2px 2px 0px var(--retro-border);
 }
 
 .pixel-btn {
-  border: 4px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
+  border: 4px solid var(--retro-border);
+  box-shadow: 4px 4px 0px var(--retro-border);
   transition: all 0.05s ease;
   image-rendering: pixelated;
   user-select: none;
@@ -27,21 +58,21 @@
 
 .pixel-btn:active {
   transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0px #000000;
+  box-shadow: 0px 0px 0px var(--retro-border);
 }
 
 .pixel-btn-disabled {
-  border: 4px solid #666666;
-  background-color: #444444 !important;
-  color: #888888 !important;
-  box-shadow: 2px 2px 0px #222222;
+  border: 4px solid var(--retro-muted);
+  background-color: var(--retro-inner) !important;
+  color: var(--retro-muted) !important;
+  box-shadow: 2px 2px 0px var(--retro-border);
   cursor: not-allowed;
   pointer-events: none;
 }
 
 .pixel-progress-bg {
-  border: 3px solid #000000;
-  background-color: #1a1a1a;
+  border: 3px solid var(--retro-border);
+  background-color: var(--retro-inner);
   padding: 2px;
   height: 24px;
 }
@@ -57,16 +88,16 @@
   width: 12px;
 }
 ::-webkit-scrollbar-track {
-  background: #1e1e1e;
-  border-left: 4px solid #000000;
+  background: var(--retro-inner);
+  border-left: 4px solid var(--retro-border);
 }
 ::-webkit-scrollbar-thumb {
-  background: #555555;
-  border: 3px solid #1e1e1e;
-  border-right: 4px solid #000000;
+  background: var(--retro-muted);
+  border: 3px solid var(--retro-inner);
+  border-right: 4px solid var(--retro-border);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #888888;
+  background: var(--retro-text);
 }
 
 /* CRT scanlines effect (optional/idle toggle) */
