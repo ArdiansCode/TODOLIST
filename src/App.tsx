@@ -25,26 +25,7 @@ export default function App() {
   const [tasks, setTasks] = useState<Task[]>(() => {
     const saved = localStorage.getItem('retro_tasks');
     if (saved) return JSON.parse(saved);
-    return [
-      {
-        id: '1',
-        title: 'Mulai belajar dengan pomodoro 💻',
-        difficulty: 'medium',
-        completed: false,
-        xpReward: 35,
-        coinReward: 25,
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: '2',
-        title: 'Siapkan bekal gizi dan makanan sehat untuk pet 🍎',
-        difficulty: 'easy',
-        completed: false,
-        xpReward: 15,
-        coinReward: 10,
-        createdAt: new Date().toISOString(),
-      }
-    ];
+    return [];
   });
   const [coins, setCoins] = useState<number>(() => {
     const saved = localStorage.getItem('retro_coins');
@@ -102,21 +83,7 @@ export default function App() {
   const [contributions, setContributions] = useState<{ [date: string]: number }>(() => {
     const saved = localStorage.getItem('retro_contributions');
     if (saved) return JSON.parse(saved);
-    
-    // Seed past 3 days so the heatmap is active and beautiful on first view!
-    const initialContribs: { [date: string]: number } = {};
-    const today = new Date();
-    for (let i = 0; i < 4; i++) {
-      const d = new Date();
-      d.setDate(today.getDate() - i);
-      const year = d.getFullYear();
-      const month = String(d.getMonth() + 1).padStart(2, '0');
-      const dayStr = String(d.getDate()).padStart(2, '0');
-      const formatted = `${year}-${month}-${dayStr}`;
-      initialContribs[formatted] = Math.floor(Math.random() * 3) + 1;
-    }
-    localStorage.setItem('retro_contributions', JSON.stringify(initialContribs));
-    return initialContribs;
+    return {};
   });
   const [currentTime, setCurrentTime] = useState<string>('');
   const [playerName, setPlayerName] = useState<string>(() => {
